@@ -1,10 +1,7 @@
 <?php
 
-
-use Illuminate\Support\Facades\View;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CrudController;
-use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,19 +24,4 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('new', [\App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
-
-Route::resource('crud', CrudController::class);
-
-Route::get('testdata', function(){
-    return View::first([
-        'view.new',
-        'view.default'
-    ]);
-});
-
-Route::get('index', function(){
-    return view('index',[
-        'tag' => '<h1>',
-    ]);
-});
+Route::resource('blog', BlogController::class);
